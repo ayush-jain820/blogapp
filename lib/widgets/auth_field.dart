@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AuthField extends StatefulWidget {
   final String text;
+  // ignore: non_constant_identifier_names
   final TextEditingController? Controller;
   final bool isobscure;
   final Icon? icon;
@@ -9,6 +10,7 @@ class AuthField extends StatefulWidget {
   const AuthField({
     super.key,
     required this.text,
+    // ignore: non_constant_identifier_names
     required this.Controller,
     this.isobscure = false,
     this.icon,

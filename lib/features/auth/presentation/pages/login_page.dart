@@ -1,15 +1,18 @@
 import 'package:blogapp/core/theme/app_pallete.dart';
+import 'package:blogapp/features/auth/presentation/pages/signup_page.dart';
 import 'package:blogapp/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class LoginPage extends StatefulWidget {
+      static route()=> MaterialPageRoute(builder: (context) =>  LoginPage());
+
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final  _nameController = TextEditingController();
   final  _emailController = TextEditingController();
@@ -42,14 +45,13 @@ class _SignupPageState extends State<SignupPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Sign Up',
+                      Text('Login',
                       style: TextStyle(
                         fontSize:32,
                         fontWeight: FontWeight.w600,
                       ),),
                       SizedBox(height: 15,),
-                      AuthField(text: 'Name',Controller: _nameController,),
-                      SizedBox(height: 15,),
+                     
                       AuthField(text: 'Email',Controller: _emailController,),
                       SizedBox(height: 15,),
                       AuthField(text: 'Password',Controller: _passwordController,
@@ -76,25 +78,35 @@ class _SignupPageState extends State<SignupPage> {
                             
                            
                           ),
-                          child: Text('Sign Up'),
+                          child: Text('Login'),
                         ),
                       ),
-                      RichText(text: TextSpan(
-                        text: "Already have an account?" ,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppPallete.greyColor,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: ' Sign In',
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, SignupPage.route());
+                          
+                        },
+                        
+                        child: RichText(text: TextSpan(
+                            text: "Already have an account?" ,
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppPallete.gradient1,
-                              fontWeight: FontWeight.w600,
+                              color: AppPallete.greyColor,
                             ),
+                            children: [
+                              TextSpan(
+                                text: ' Sign In',
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  color: AppPallete.gradient1,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ]
                           ),
-                        ]
-                      ),
-                      
+                          
+                          ),
+                        ),
                       )
                     ],
                   ),

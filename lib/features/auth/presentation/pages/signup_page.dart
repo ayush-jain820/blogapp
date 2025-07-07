@@ -1,8 +1,11 @@
 import 'package:blogapp/core/theme/app_pallete.dart';
+import 'package:blogapp/features/auth/presentation/pages/login_page.dart';
 import 'package:blogapp/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
+    static route()=> MaterialPageRoute(builder: (context) =>  SignupPage());
+
   const SignupPage({super.key});
 
   @override
@@ -25,6 +28,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -79,22 +83,30 @@ class _SignupPageState extends State<SignupPage> {
                           child: Text('Sign Up'),
                         ),
                       ),
-                      RichText(text: TextSpan(
-                        text: "Already have an account?" ,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppPallete.greyColor,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: ' Sign In',
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, LoginPage.route());
+                          },
+                          child: RichText(text: TextSpan(
+                            text: "Already have an account?" ,
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppPallete.gradient1,
-                              fontWeight: FontWeight.w600,
+                              color: AppPallete.greyColor,
                             ),
+                            children: [
+                              TextSpan(
+                                text: ' Sign In',
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  color: AppPallete.gradient1,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ]
                           ),
-                        ]
-                      ),
-                      
+                          
+                          ),
+                        ),
                       )
                     ],
                   ),
