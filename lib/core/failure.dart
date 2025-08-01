@@ -1,4 +1,3 @@
-import 'package:fpdart/fpdart.dart';
 
 class Failure {
   final String message;
